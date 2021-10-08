@@ -1,0 +1,47 @@
+#include <vector>
+
+#include <iostream>
+template <long long N>
+struct Fact
+{
+    static const long long value = (Fact<N - 1>::value) * N;
+};
+template <>
+struct Fact<1>
+{
+    static const long long value = 1;
+};
+template <>
+struct Fact<0>
+{
+    static const long long value = 1;
+};
+
+template <typename T>
+T Pop(T& a , int size)
+{
+    int i = 1;
+    T* s = &a;
+    T temp = *s;
+    for (int i =1; i<size; i++)
+    {
+        s++;
+        temp=temp + *s;
+    }
+     return temp;
+}
+
+
+int main()
+{
+    std::cout << Fact<10>::value;
+    std::vector<int> a;
+    a.push_back(1);
+    a.push_back(2);
+    a.push_back(2);
+    std::cout<<std::endl;
+    std::cout<<Pop(a[0],3);
+
+
+}
+
